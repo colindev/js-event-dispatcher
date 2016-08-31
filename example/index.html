@@ -1,0 +1,18 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js"></script>
+<script>
+
+requirejs.config({});
+
+require(['./../src/dispatcher'], function(dp){
+        function Obj() {
+            return dp.init(this);
+        }
+
+        var o = new Obj
+        o.on('click', function(data){console.log(this, 'clicked with', data);})
+        o.on('open', function(data){console.log(this, 'opened with', data);})
+
+        o.trigger('click');
+        o.trigger('open', 123);
+});
+</script>
